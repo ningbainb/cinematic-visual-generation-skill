@@ -1,6 +1,6 @@
 ---
 name: cinematic-visual-generation
-description: Turn concepts, scenes, products, portraits, and story beats into cinematic still-image generation prompts with intentional composition, lighting, camera language, color grading, atmosphere, and visual continuity. Use when a user asks for movie-like, filmic, cinematic, director-style, dramatic, story-driven, or high-end editorial visual generation or image edits.
+description: Turn concepts, scenes, products, portraits, story beats, micro-film storyboards, and shot lists into cinematic image-generation prompts with intentional composition, lighting, camera language, color grading, atmosphere, and visual continuity. Use when a user asks for movie-like, filmic, cinematic, director-style, dramatic, story-driven, cinematic storyboard, 分镜, 故事板, 微电影, 电影感, 真实感, or 去 AI 味 visual generation or image edits.
 ---
 
 # Cinematic Visual Generation
@@ -9,11 +9,17 @@ Create images that feel like a deliberate film frame, not a list of attractive e
 
 ## Workflow
 
-1. Identify the frame's subject, action, emotional beat, setting, and intended viewer feeling. Infer ordinary missing details; ask only if an unresolved choice would change the result materially.
-2. Choose a visual grammar that supports the beat: shot size, camera angle, lens character, depth of field, lighting motivation, palette, atmosphere, and composition.
-3. Build one coherent prompt in this order: subject and action; environment; framing and camera; lighting; palette and texture; mood; exclusions. Prefer concrete visual evidence over adjectives.
-4. Generate the image. For a series, preserve the supplied character, wardrobe, setting, time of day, palette, and camera rules unless the user asks to change them.
-5. If iterating, diagnose the single biggest mismatch (story clarity, framing, light, identity, or realism) and make a targeted change rather than stacking more modifiers.
+1. Identify the requested deliverable: one frame, a prompt only, or a multi-shot storyboard. For a multi-shot request, treat each shot as a separate image by default; never substitute a contact sheet, collage, or post-hoc crop unless explicitly requested.
+2. Identify the frame's subject, action, emotional beat, setting, and intended viewer feeling. Infer ordinary missing details; ask only if an unresolved choice would change the result materially.
+3. Choose one visual grammar that supports the beat: shot size, camera angle, lens character, depth of field, lighting motivation, palette, atmosphere, and composition.
+4. Build one coherent prompt in this order: subject and action; environment; framing and camera; lighting; palette and texture; mood; exclusions. Prefer concrete visual evidence over adjectives.
+5. For a series, write a **Continuity Lock** once and repeat it verbatim in every shot prompt. Lock identity, hair, wardrobe, key prop, location, time/weather, and base palette; vary only the shot-specific action, framing, and available light.
+6. Generate each requested image independently. If an image reference is available, use it for continuity, not as permission to merge frames or copy a contact sheet layout.
+7. If iterating, diagnose the single biggest mismatch (story clarity, framing, light, identity, or realism) and make a targeted change rather than stacking more modifiers.
+
+### Style priority
+
+Resolve conflicts in this order: **explicit user request > story/emotional beat > selected recipe > default cinematic language**. Select one primary recipe per frame. Do not combine grounded documentary constraints with neon noir or epic rim-light conventions unless the user explicitly asks for that hybrid.
 
 ## Prompt Standard
 
@@ -27,6 +33,13 @@ Use this compact pattern:
 [Light]: [motivated source], [contrast and shadow behavior].
 [Look]: [palette], [texture/medium], [atmosphere], [emotional tone].
 Avoid: [only likely failure modes].
+```
+
+For sequences, prepend this block to every prompt:
+
+```text
+Continuity Lock: [identity and age], [hair and wardrobe], [key prop], [location], [time/weather], [base palette]. Keep these unchanged across all shots.
+Shot Delta: [only this shot's action, framing, camera position, and motivated light change].
 ```
 
 ### Grounded realism guardrails
