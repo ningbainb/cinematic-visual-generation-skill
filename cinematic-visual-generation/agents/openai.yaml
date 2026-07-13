@@ -1,0 +1,4 @@
+interface:
+  display_name: "电影感视觉生成"
+  short_description: "将创意转化为电影级画面与镜头叙事。"
+  default_prompt: "Use $cinematic-visual-generation to create a cinematic image concept and generation prompt."

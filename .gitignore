@@ -1,0 +1,11 @@
+# Generated image outputs
+output/
+
+# Local Codex and agent state
+.agents/
+.codex/
+.tools/
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
