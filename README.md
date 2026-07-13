@@ -1,5 +1,7 @@
 # Cinematic Visual Generation
 
+[中文版文档](README.zh-CN.md)
+
 A Codex skill for turning story beats, scenes, portraits, and products into cinematic image-generation prompts with intentional camera language—without relying on glossy, generic “AI film still” styling.
 
 It is particularly useful for storyboards, micro-films, key art exploration, and grounded visual narratives.
